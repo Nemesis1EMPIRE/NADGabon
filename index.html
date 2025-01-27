@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAD Gabon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+           <a href="index.html"><img src="images/NAD.png"></a>
+        </div>
+        <div class="nav-left"><h4>Luttons ensemble contre l'escroquerie immobilière</h4></div>
+    </header>
+
+    <!-- Recherche Section -->
+    <section class="recherche">
+        <input type="text" id="searchInput" placeholder="Rechercher une maison, appartement ou terrain...">
+        
+        <label for="prixInput">Prix maximum (en CFA) :</label>
+        <input type="number" id="prixInput" placeholder="Prix en CFA">
+        
+        <label for="typeBien">Type de bien :</label>
+        <select id="typeBien">
+            <option value="tous">Tous</option>
+            <option value="maison">Maison</option>
+            <option value="appartement">Appartement</option>
+            <option value="terrain">Terrain</option>
+        </select>
+
+        <label for="locationOption">Choisir une option :</label>
+        <select id="locationOption">
+            <option value="tous">Tous</option>
+            <option value="acheter">Acheter</option>
+            <option value="louer">Louer</option>
+        </select>
+
+        <button onclick="search()">Rechercher</button>
+    </section>
+
+    <!-- Section des Résultats de Recherche -->
+    <section class="biens">
+        <h2>Résultats de la Recherche</h2>
+        <div class="biens-list" id="biensList"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

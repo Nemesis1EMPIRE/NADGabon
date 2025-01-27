@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAD Gabon/Détails</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+           <a href="index.html"><img src="images/NAD.png"></a>
+        </div>
+        <div class="nav-left"><h4>Luttons ensemble contre l'escroquerie immobilière</h4></div>
+    </header>
+
+    <!-- Détail du Bien -->
+    <section class="detail-bien">
+        <h2 id="bienNom"></h2>
+        <div class="images-bien" id="imagesBien"></div>
+        <p id="bienDescription"></p>
+        <p id="bienPrix"></p>
+        <p id="bienOption"></p>
+    </section>
+
+    <script>
+        // Récupérer l'ID du bien depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const bienId = urlParams.get('id');
+
+        // Tableau des biens (doit être le même que celui de index.html et script.js)
+        const biens = [
+            {
+                id: 1,
+                type: "maison",
+                prix: 350000,
+                image: "images/maison1.jpg",
+                nom: "Maison 1",
+                description: "Belle maison avec jardin.",
+                option: "acheter",
+                images: [
+                    "images/maison.webp",
+                    "images/appartinter.webp"
+                ]
+            },
+            {
+                id: 2,
+                type: "appartement",
+                prix: 200000,
+                image: "images/appartinter.webp",
+                nom: "Appartement 1",
+                description: "Appartement moderne avec vue.",
+                option: "louer",
+                images: [
+                    "images/appartinter.webp",
+                    "images/interappart.jpg"
+                ]
+            },
+            {
+                id: 3,
+                type: "terrain",
+                prix: 100000,
+                image: "images/terrain1.jpg",
+                nom: "Terrain 1",
+                description: "Terrain idéal pour construire.",
+                option: "acheter",
+                images: [
+                    "images/terrain1.jpg",
+                    
+                ]
+            },
+            // ... autres biens
+        ];
+
+        // Trouver le bien correspondant à l'ID
+        const bien = biens.find(bien => bien.id == bienId);
+
+        // Afficher les détails du bien
+        if (bien) {
+            document.getElementById('bienNom').innerText = bien.nom;
+            document.getElementById('bienDescription').innerText = bien.description;
+            document.getElementById('bienPrix').innerText = `Prix: ${bien.prix.toLocaleString()} CFA`;
+            document.getElementById('bienOption').innerText = `Option: ${bien.option.charAt(0).toUpperCase() + bien.option.slice(1)}`;
+
+            const imagesBien = document.getElementById('imagesBien');
+            bien.images.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+                imagesBien.appendChild(imgElement);
+            });
+        } else {
+            document.body.innerHTML = '<p>Bien non trouvé.</p>';
+        }
+    </script>
+
+</body>
+
+</html>
